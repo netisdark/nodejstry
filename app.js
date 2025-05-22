@@ -15,7 +15,11 @@ const connection = mysql.createConnection({
 
 connection.connect(err => {
   if (err) throw err;
-  console.log('Connected to MySQL');
+  DB_HOST=localhost
+DB_USERNAME=root
+DB_PASSWORD=yourpass
+DB_DBNAME=mydb
+
 });
 app.get('/orders', (req, res) => {
   connection.query('SELECT * FROM orders', (err, results) => {
@@ -74,5 +78,5 @@ app.get('/orders', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}/orders`);
+  console.log(`Server is running at https://${__dirname}/orders`);
 });
