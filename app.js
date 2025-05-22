@@ -15,10 +15,11 @@ const connection = mysql.createConnection({
 
 connection.connect(err => {
   if (err) throw err;
-  DB_HOST=localhost
-DB_USERNAME=root
-DB_PASSWORD=yourpass
-DB_DBNAME=mydb
+  console.log('DB_HOST:', process.env.DB_HOST);
+console.log('DB_USERNAME:', process.env.DB_USERNAME);
+console.log('DB_PASSWORD:', process.env.DB_PASSWORD ? '******' : 'MISSING');
+console.log('DB_DBNAME:', process.env.DB_DBNAME);
+
 
 });
 app.get('/orders', (req, res) => {
@@ -78,5 +79,5 @@ app.get('/orders', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running at https://${__dirname}/orders`);
+  console.log(`Server is running at https://nodejstry.onrender.com/orders`);
 });
