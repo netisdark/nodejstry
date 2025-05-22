@@ -4,10 +4,13 @@ const mysql = require('mysql');
 const app = express();
 const port = 3000;
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'food_db'
+  host: process.env.DB_HOST, 
+    user: process.env.DB_USERNAME, 
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DBNAME,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
 connection.connect(err => {
